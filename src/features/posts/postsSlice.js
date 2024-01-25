@@ -151,6 +151,13 @@ const selectPostsData = createSelector(
   (postsResult) => postsResult.data //normalized state object with ids and entities
 );
 
+// Create a selector for posts by a particular user
+export const selectPostsByUser = (id) => {
+  createSelector(selectPostsResult, (results) =>
+    results.filter((result) => result.userId === id)
+  );
+};
+
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
   selectAll: selectAllPosts,
